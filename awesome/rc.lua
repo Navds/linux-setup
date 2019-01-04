@@ -517,7 +517,7 @@ globalkeys = my_table.join(
         end,
         {description = "show dmenu", group = "launcher"}),
     -- rofi
-    awful.key({ modkey }, "g", function ()
+    awful.key({ modkey }, "o", function ()
             os.execute("rofi -combi-modi window,drun -show combi -modi combi")
         end,
         {description = "show dmenu", group = "launcher"}),
