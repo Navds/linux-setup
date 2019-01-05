@@ -1,8 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+ #set -x
 
 # Path to your oh-my-zsh installation.
-  export ZSH="/home/b4ckg0/.oh-my-zsh"
+export ZSH="/home/$USER/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,8 +69,9 @@ plugins=(
   vi-mode
   z
   docker
+  tmux
 #  chucknorris
-  catimg
+  #catimg
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -83,7 +85,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
+export EDITOR='vim'
 # else
 #   export EDITOR='mvim'
 # fi
@@ -102,10 +104,33 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-source /usr/share/nvm/init-nvm.sh
+#source /usr/share/nvm/init-nvm.sh
+#
+# NOTE TO SELF: The above nvm initialisation really slows down shell startup
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .bashrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'yarn' 'gulp' 'grunt' 'webpack')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/home/b4ckg0/app/google-cloud-sdk/path.zsh.inc' ]; then . '/home/b4ckg0/app/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "/home/$USER/app/google-cloud-sdk/path.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/home/b4ckg0/app/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/b4ckg0/app/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "/home/$USER/app/google-cloud-sdk/completion.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Persisting registered keys in ssh-agent (no longer needed, see ssh config)
+#[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
+#
+#set +x
+#
