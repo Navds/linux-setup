@@ -58,23 +58,42 @@ ZSH_THEME="ys"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+# Set fzf installation directory path
+export FZF_BASE=/usr/share/fzf
+#
+# # Uncomment the following line to disable fuzzy completion
+# # export DISABLE_FZF_AUTO_COMPLETION="true"
+#
+# # Uncomment the following line to disable key bindings (CTRL-T, CTRL-R, ALT-C)
+# # export DISABLE_FZF_KEY_BINDINGS="true"
+#
+#
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  zsh-autosuggestions
+  fzf
   git
+  svn
   last-working-dir
   vi-mode
   z
-  docker
+  cp
   tmux
+  colored-man-pages
+  fast-syntax-highlighting
+  docker
+  docker-compose
 #  chucknorris
   #catimg
 )
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.my-zsh.sh
 
 # User configuration
 
@@ -124,10 +143,10 @@ if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
 fi
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "/home/$USER/app/google-cloud-sdk/path.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/app/google-cloud-sdk/path.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f "/home/$USER/app/google-cloud-sdk/completion.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/app/google-cloud-sdk/completion.zsh.inc" ]; then . '/home/b4ckg0/app/google-cloud-sdk/completion.zsh.inc'; fi
 
 # Persisting registered keys in ssh-agent (no longer needed, see ssh config)
 #[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
