@@ -2,6 +2,7 @@
     "workbench.colorTheme": "Pitch Black",
     "window.menuBarVisibility": "toggle",
     "window.titleBarStyle": "native",
+    "window.title": "${activeEditorLong}${separator}${rootName}",
     "workbench.iconTheme": null,
     "workbench.startupEditor": "welcomePage",
     "vim.easymotion": true,
