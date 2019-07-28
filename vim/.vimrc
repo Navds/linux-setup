@@ -55,6 +55,7 @@ let g:airline_theme='ubaryd'
 
 set enc=utf-8
 set fileencoding=utf-8
+let g:ctrlp_show_hidden = 1
 
 let g:NERDTreeDirArrowExpandable = '▸'
 let g:NERDTreeDirArrowCollapsible = '▾'
