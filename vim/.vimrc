@@ -39,6 +39,7 @@ set number relativenumber numberwidth=5
 set shiftwidth=4
 set shiftround
 
+let g:ale_echo_cursor = 0 " fix cursor disapper on erroneous line
 let g:PaperColor_Theme_Options = {
   \   'theme': {
   \     'default.dark': {
