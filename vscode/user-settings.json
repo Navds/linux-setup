@@ -5,6 +5,7 @@
     "window.title": "${activeEditorLong}${separator}${rootName}",
     "workbench.iconTheme": null,
     "workbench.startupEditor": "welcomePage",
+    "workbench.editor.enablePreview": false,
     "window.zoomLevel": -1,
     "editor.fontSize": 14,
     "terminal.integrated.fontSize": 16,
