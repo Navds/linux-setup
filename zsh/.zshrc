@@ -9,7 +9,7 @@ export ZSH="/home/$USER/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="ys"
+#ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -78,7 +78,7 @@ plugins=(
   zsh-autosuggestions
   fzf
   git
-  svn
+  #svn
   last-working-dir
   vi-mode
   z
@@ -153,3 +153,11 @@ if [ -f "$HOME/app/google-cloud-sdk/completion.zsh.inc" ]; then . '/home/b4ckg0/
 #
 #set +x
 #
+eval $(thefuck --alias)
+eval "$(starship init zsh)"
+
+
+# twilio autocomplete setup
+TWILIO_AC_ZSH_SETUP_PATH=/home/navds/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH;
+eval "$(direnv hook zsh)"
+
